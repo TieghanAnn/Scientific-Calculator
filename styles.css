@@ -1,163 +1,168 @@
-/* General body styling */
+/* General Styles */
 body {
-    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Scientific font */
     margin: 0;
+    padding: 0;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.7)), url('cal background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    user-select: none;
-    background: #ecf0f3;
+    justify-content: center; /* Center content vertically */
+    text-align: center; /* Center text horizontally */
+    margin-bottom: 0;
 }
 
-/* Calculator container styling */
-.calculator {
-    display: grid;
-    place-items: center;
-    background-color: #dbe6f1; /* Light blue pastel background */
-    border-radius: 12px;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
-    width: 400px;  /* Fixed width for better alignment */
-    height: 600px; /* Adjusted height */
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr; /* Let content grow naturally */
-    gap: 10px;
-    padding: 20px;
-}
-
-/* Heading styling */
-.heading h2 {
-    font-size: 28px;
-    color: #4c6f96; /* Pastel blue color */
+/* Header */
+header {
     text-align: center;
-    margin-bottom: 2%;
-}
-
-/* Display screen styling */
-.display {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px; /* Ensure some space between display and buttons */
-}
-
-#calc-screen {
     width: 100%;
-    height: 50px; /* Adjust height for better screen size */
-    font-size: 24px;
+    margin-top: 2%; /* Add spacing from the top */
+    z-index: 1; /* Ensure it's above the background */
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-top: 10%;
+    color: white; /* Make the header text stand out */
+    margin: 0;
+}
+
+/* Calculator Section */
+section {
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+    padding: 3%; /* Padding inside the section */
+    width: 90%; /* Width of the section */
+    max-width: 350px; /* Adjusted max width */
+    text-align: center; 
+    z-index: 1; /* Ensure it's above the background */
+    position: relative; 
+    margin-top: 2%;
+    margin-bottom: 2%; /* Ensure spacing below */
+}
+
+/* Display */
+#display {
+    width: 100%;
+    font-size: 1.8rem;
+    padding: 3%; /* Added extra padding for better spacing */
+    margin-bottom: 5%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
     text-align: right;
-    padding-right: 15px;
-    background: #f2f9fc; /* Light pastel blue */
-    border: none;
-    border-radius: 6px;
-    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1), inset -3px -3px 8px rgba(255, 255, 255, 0.7);
+    background-color: #f9f9f9;
+    color: black; /* Black text for visibility */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-/* Calculator button grid */
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-gap: 10px;
+/* Mode Buttons */
+.mode-buttons {
+    margin-bottom: 10%; /* Add space between display and buttons */
+    display: flex;
+    justify-content: space-between; /* Spacing between buttons */
+    gap: 10px; /* Ensure there's space between each button */
+}
+
+.mode-buttons button {
+    padding: 2%;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #eaebea; /* Green background */
+    color: black; /* Black text */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mode-buttons button.active {
+    background-color: #074387; /* Darker green on active */
+}
+
+.mode-buttons button:hover {
+    background-color: #dfe6df; /* Hover effect for buttons */
+}
+
+/* Degrees and Back Buttons */
+.degrees-back-buttons {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between buttons */
+    margin-top: 10px; /* Add spacing above the buttons */
+}
+
+.degrees-back-buttons button {
+    width: 48%; /* Set the width to 48% for each button to fit in the row */
+    padding: 5%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #841a07;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+/* Buttons */
+button {
     width: 100%;
-    grid-template-rows: repeat(5, 60px); /* Ensures each row is consistent in height */
-    height: 100%; /* Make sure it fills the remaining space in the calculator */
-}
-
-/* Button styling */
-button {
-    width: 100%; /* Full width relative to container */
-    height: 60px; /* Increased height for better clickability */
-    font-size: 22px;
+    padding: 5%;
+    font-size: 1rem;
     border: none;
-    outline: none;
-    border-radius: 6px;
-    background-color: #e1e8f0; /* Pastel gray */
-    color: #4c6f96; /* Dark pastel blue */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(255, 255, 255, 0.7);
-    transition: background 0.2s, box-shadow 0.2s;
-}
-
-/* Special button colors */
-#eval {
-    background: #7ed6df; /* Pastel blue */
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #841a07;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
-#eval:hover {
-    background: #5dc0d6;
-}
-
-#ac {
-    background: #2c3e50; /* Dark blue */
-    color: white;
-}
-
-#ac:hover {
-    background: #34495e; /* Darker blue */
-}
-
-#ce {
-    background: #ff8e8e; /* Pastel pink */
-    color: white;
-}
-
-#ce:hover {
-    background: #ff6f6f;
-}
-
-/* Other function button colors */
-#plus, #minus, #multiply, #divide {
-    background: #f39c12; /* Orange for operation buttons */
-    color: white;
-}
-
-#plus:hover, #minus:hover, #multiply:hover, #divide:hover {
-    background: #e67e22; /* Darker orange for hover effect */
-}
-
-#equal {
-    background: #27ae60; /* Green for the equal sign */
-    color: white;
-}
-
-#equal:hover {
-    background: #2ecc71; /* Lighter green for hover effect */
-}
-
-/* Button hover effect */
 button:hover {
-    background-color: #d1dde7; /* Lighter pastel gray */
-    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1), inset -3px -3px 8px rgba(255, 255, 255, 0.7);
+    background-color: #5f1407;
 }
 
-/* Adjust button padding */
-button {
-    padding: 0 15px;
+
+table {
+    width: 100%;
+    border-spacing: 5%;
 }
 
-/* Square layout adjustments */
-.calculator {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 10px;
-    place-items: center;
-    padding: 20px;
-}
-
-/* Responsive design (mobile screens) */
-@media (max-width: 400px) {
-    .calculator {
-        width: 300px;
-        height: 400px; /* Adjusted for mobile view */
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
     }
 
-    #calc-screen {
-        font-size: 20px;
-        height: 50px; /* Adjusted screen height for mobile */
+    #display {
+        font-size: 1.5rem;
+        padding: 3%;
+        width: 100%; /* Ensure it stretches on smaller screens */
+        margin-bottom: 5%; /* Add some space below */
     }
 
-    button {
-        font-size: 18px;
-        height: 50px; /* Adjusted button height */
+    .mode-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+        margin-bottom: 15%;
+    }
+
+    .mode-buttons button {
+        width: 100%; /* Full width for buttons */
+        margin-bottom: 10px; /* Space between buttons */
+    }
+
+    .degrees-back-buttons {
+        flex-direction: column; /* Stack the buttons vertically */
+        margin-top: 5px; /* Reduce the margin above */
+    }
+
+    .degrees-back-buttons button {
+        width: 100%; /* Full width for buttons */
+        margin-bottom: 10px; /* Space between buttons */
     }
 }

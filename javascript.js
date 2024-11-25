@@ -1,135 +1,110 @@
-// Get the display screen and buttons
-var calcScreen = document.querySelector('#calc-screen');
-var calculatorButtons = document.querySelectorAll('.btn');
+const display = document.getElementById('display');
+let currentMode = 'degrees'; // Default mode
 
-// Loop through each button and add event listener
-for (let button of calculatorButtons) {
-    button.addEventListener('click', (event) => {
-        let buttonText = event.target.innerText;
-
-        // Handle multiplication and division symbol conversion
-        if (buttonText == '×') {
-            buttonText = '*';
-        }
-        if (buttonText == '÷') {
-            buttonText = '/';
-        }
-
-        // Handle special button '=' for evaluation
-        if (buttonText == '=') {
-            evaluateExpression();
-            return;
-        }
-
-        // Handle the "AC" button for clearing the screen
-        if (buttonText == 'AC') {
-            clearScreen();
-            return;
-        }
-
-        // Append button text to screen
-        calcScreen.value += buttonText;
-    });
+// Append a value to the display
+function append(value) {
+    if (value === 'pi') {
+        display.value += Math.PI.toFixed(6);
+    } else if (value === 'e') {
+        display.value += Math.E.toFixed(6);
+    } else {
+        display.value += value;
+    }
 }
 
-// Clear the screen
-function clearScreen() {
-    calcScreen.value = '';
+// Clear the display
+function clearDisplay() {
+    display.value = '';
 }
 
-// Evaluate the mathematical expression
-function evaluateExpression() {
+// Function to calculate the result
+function calculate() {
     try {
-        // Attempt to evaluate the expression safely
-        calcScreen.value = (new Function('return ' + calcScreen.value))();
-    } catch (error) {
-        calcScreen.value = "Error"; // Show error if expression is invalid
-    }
-}
-
-// Trigonometric functions (convert to radians)
-function sinFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value)) {
-        calcScreen.value = Math.sin(toRadians(value));
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-function cosFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value)) {
-        calcScreen.value = Math.cos(toRadians(value));
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-function tanFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value)) {
-        calcScreen.value = Math.tan(toRadians(value));
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-// Square root function
-function sqrtFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value) && value >= 0) {
-        calcScreen.value = Math.sqrt(value);
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-// Logarithm function
-function logFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value) && value > 0) {
-        calcScreen.value = Math.log(value);
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-// Insert π (Pi) constant
-function insertPi() {
-    calcScreen.value += Math.PI;
-}
-
-// Insert Euler's constant (e)
-function insertE() {
-    calcScreen.value += Math.E;
-}
-
-// Power function (x^2)
-function powerFunction() {
-    let value = parseFloat(calcScreen.value);
-    if (!isNaN(value)) {
-        calcScreen.value = Math.pow(value, 2);
-    } else {
-        calcScreen.value = "Error"; // Invalid input
-    }
-}
-
-// Factorial function
-function calculateFactorial() {
-    let value = parseInt(calcScreen.value);
-    if (!isNaN(value) && value >= 0) {
-        let result = 1;
-        for (let i = 1; i <= value; i++) {
-            result *= i;
+        if (currentMode === 'radians') {
+            calculateRadians();
+        } else {
+            calculateDegrees();
         }
-        calcScreen.value = result;
-    } else {
-        calcScreen.value = "Error"; // Invalid input
+    } catch (error) {
+        display.value = 'Error';
     }
 }
 
-// Convert degrees to radians (since trig functions expect radians)
-function toRadians(degrees) {
-    return degrees * Math.PI / 180;
+// Calculate result in radians
+function calculateRadians() {
+    try {
+        let expression = display.value
+            .replace(/\^/g, '**')
+            .replace(/sqrt\(/g, 'Math.sqrt(')
+            .replace(/sin\(/g, 'Math.sin(')
+            .replace(/cos\(/g, 'Math.cos(')
+            .replace(/tan\(/g, 'Math.tan(')
+            .replace(/log\(/g, 'Math.log10(')
+            .replace(/%/g, '/100');
+
+        const result = new Function(`return ${expression}`)();
+        display.value = Number.isFinite(result) ? result.toFixed(6) : 'Error';
+    } catch {
+        display.value = 'Error';
+    }
+}
+
+// Calculate result in degrees
+function calculateDegrees() {
+    try {
+        let expression = display.value
+            .replace(/\^/g, '**')
+            .replace(/sqrt\(/g, 'Math.sqrt(')
+            .replace(/sin\(/g, 'degToRadSin(')
+            .replace(/cos\(/g, 'degToRadCos(')
+            .replace(/tan\(/g, 'degToRadTan(')
+            .replace(/log\(/g, 'Math.log10(')
+            .replace(/%/g, '/100');
+
+        const result = new Function(`return ${expression}`)();
+        display.value = Number.isFinite(result) ? result.toFixed(6) : 'Error';
+    } catch {
+        display.value = 'Error';
+    }
+}
+
+// Helper functions to convert degrees to radians for trigonometric calculations
+function degToRadSin(value) {
+    return Math.sin((value * Math.PI) / 180);
+}
+
+function degToRadCos(value) {
+    return Math.cos((value * Math.PI) / 180);
+}
+
+function degToRadTan(value) {
+    return Math.tan((value * Math.PI) / 180);
+}
+
+// Switch to radians mode
+function setRadiansMode() {
+    currentMode = 'radians';
+    clearDisplay(); // Clear the display to avoid confusion
+    updateModeLabel();
+}
+
+// Switch to degrees mode
+function setDegreesMode() {
+    currentMode = 'degrees';
+    clearDisplay(); // Clear the display to avoid confusion
+    updateModeLabel();
+}
+
+
+function backspace() {
+    display.value = display.value.slice(0, -1); // Remove the last character
+}
+
+
+// Update the mode label visually
+function updateModeLabel() {
+    const radiansButton = document.getElementById('radians-mode');
+    const degreesButton = document.getElementById('degrees-mode');
+    radiansButton.classList.toggle('active', currentMode === 'radians');
+    degreesButton.classList.toggle('active', currentMode === 'degrees');
 }
