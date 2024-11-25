@@ -11,71 +11,69 @@
 <body>
 
     <!-- Calculator Container -->
-    <div class="calculator">
-        <!-- Heading for the calculator at the top -->
-        <div class="heading">
-            <h2>Scientific <span>Calculator</span></h2>
-        </div>
+    <section class="calculator">
+    
+        <header class="heading">
+            <h2>Scientific <strong>Calculator</strong></h2>
+        </header>
 
-        <!-- Display screen for the calculator -->
-        <div class="display">
+        <!-- Display Screen -->
+        <form class="display">
             <input id="calc-screen" type="text" placeholder="0" readonly>
-        </div>
+        </form>
 
-        <!-- Calculator buttons -->
-        <div class="buttons">
+        <!-- Buttons -->
+        <main class="buttons">
             <!-- First Row -->
-<div class="row">
-    <button class="btn" id="clear" onclick="clearScreen()">CE</button>
-    <button class="btn" onclick="calculateFactorial()">x!</button>
-    <button class="btn" onclick="insertOperator('/')">/</button>
-    <button class="btn" onclick="insertOperator('*')">×</button>
-</div>
-
+            <section class="row">
+                <button class="btn" id="clear" onclick="clearScreen()">CE</button>
+                <button class="btn" onclick="calculateFactorial()">x!</button>
+                <button class="btn" onclick="insertOperator('÷')">÷</button>
+                <button class="btn" onclick="insertOperator('×')">×</button>
+            </section>
 
             <!-- Second Row -->
-            <div class="row">
+            <section class="row">
                 <button class="btn" onclick="sinFunction()">sin</button>
                 <button class="btn" onclick="insertPi()">π</button>
                 <button class="btn">7</button>
                 <button class="btn">8</button>
                 <button class="btn">9</button>
                 <button class="btn">-</button>
-            </div>
+            </section>
 
             <!-- Third Row -->
-            <div class="row">
+            <section class="row">
                 <button class="btn" onclick="cosFunction()">cos</button>
                 <button class="btn" onclick="logFunction()">log</button>
                 <button class="btn">4</button>
                 <button class="btn">5</button>
                 <button class="btn">6</button>
                 <button class="btn">+</button>
-            </div>
+            </section>
 
             <!-- Fourth Row -->
-            <div class="row">
+            <section class="row">
                 <button class="btn" onclick="tanFunction()">tan</button>
                 <button class="btn" onclick="sqrtFunction()">√</button>
                 <button class="btn">1</button>
                 <button class="btn">2</button>
                 <button class="btn">3</button>
                 <button class="btn">.</button>
-            </div>
+            </section>
 
             <!-- Fifth Row -->
-            <div class="row">
+            <section class="row">
                 <button class="btn" onclick="insertE()">e</button>
-                <button class="btn" onclick="powerFunction()">x <sup>y</sup></button>
+                <button class="btn" onclick="powerFunction()">x <sup>2</sup></button>
                 <button class="btn">0</button>
                 <button class="btn" onclick="evaluateExpression()">=</button>
                 <button class="btn" onclick="clearScreen()">AC</button>
-            </div>
-        </div>
-    </div>
+            </section>
+        </main>
+    </section>
 
     <!-- Linking the JavaScript file -->
     <script src="javascript.js"></script>
 </body>
-
 </html>
