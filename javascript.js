@@ -1,5 +1,5 @@
 const display = document.getElementById('display');
-let currentMode = 'degrees'; // Default mode
+let currentMode = 'degrees'; 
 
 // Append a value to the display
 function append(value) {
@@ -12,12 +12,12 @@ function append(value) {
     }
 }
 
-// Clear the display
+
 function clearDisplay() {
     display.value = '';
 }
 
-// Function to calculate the result
+
 function calculate() {
     try {
         if (currentMode === 'radians') {
@@ -68,7 +68,7 @@ function calculateDegrees() {
     }
 }
 
-// Helper functions to convert degrees to radians for trigonometric calculations
+// functions created to convert degrees to radians for trigonometric calculations
 function degToRadSin(value) {
     return Math.sin((value * Math.PI) / 180);
 }
@@ -84,20 +84,20 @@ function degToRadTan(value) {
 // Switch to radians mode
 function setRadiansMode() {
     currentMode = 'radians';
-    clearDisplay(); // Clear the display to avoid confusion
+    clearDisplay(); 
     updateModeLabel();
 }
 
 // Switch to degrees mode
 function setDegreesMode() {
     currentMode = 'degrees';
-    clearDisplay(); // Clear the display to avoid confusion
+    clearDisplay(); 
     updateModeLabel();
 }
 
 
 function backspace() {
-    display.value = display.value.slice(0, -1); // Remove the last character
+    display.value = display.value.slice(0, -1); 
 }
 
 

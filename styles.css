@@ -1,6 +1,6 @@
-/* General Styles */
+
 body {
-    font-family: 'Roboto', Arial, sans-serif; /* Scientific font */
+    font-family: 'Roboto', Arial, sans-serif; 
     margin: 0;
     padding: 0;
     background: linear-gradient(black, rgba(0, 0, 0, 0.7)), url('cal background.jpg') no-repeat center center fixed;
@@ -9,63 +9,63 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    text-align: center; /* Center text horizontally */
+    justify-content: center; 
+    text-align: center; 
     margin-bottom: 0;
 }
 
-/* Header */
+
 header {
     text-align: center;
     width: 100%;
-    margin-top: 2%; /* Add spacing from the top */
-    z-index: 1; /* Ensure it's above the background */
+    margin-top: 2%; 
+    z-index: 1; 
     position: relative;
 }
 
 header h1 {
     font-size: 2.5rem;
     margin-top: 10%;
-    color: white; /* Make the header text stand out */
+    color: white; 
     margin: 0;
 }
 
 /* Calculator Section */
 section {
-    background-color: #fff; /* White background */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; 
+    border-radius: 10px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
-    padding: 3%; /* Padding inside the section */
-    width: 90%; /* Width of the section */
-    max-width: 350px; /* Adjusted max width */
+    padding: 3%; 
+    width: 90%; 
+    max-width: 350px; 
     text-align: center; 
-    z-index: 1; /* Ensure it's above the background */
+    z-index: 1; 
     position: relative; 
     margin-top: 2%;
-    margin-bottom: 2%; /* Ensure spacing below */
+    margin-bottom: 2%; 
 }
 
-/* Display */
+
 #display {
     width: 100%;
     font-size: 1.8rem;
-    padding: 3%; /* Added extra padding for better spacing */
+    padding: 3%; 
     margin-bottom: 5%;
     border: 2px solid #ccc;
     border-radius: 5px;
     text-align: right;
     background-color: #f9f9f9;
-    color: black; /* Black text for visibility */
+    color: black; 
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box; 
 }
 
-/* Mode Buttons */
+
 .mode-buttons {
-    margin-bottom: 10%; /* Add space between display and buttons */
+    margin-bottom: 10%; 
     display: flex;
-    justify-content: space-between; /* Spacing between buttons */
-    gap: 10px; /* Ensure there's space between each button */
+    justify-content: space-between; 
+    gap: 10px; 
 }
 
 .mode-buttons button {
@@ -73,29 +73,29 @@ section {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #eaebea; /* Green background */
-    color: black; /* Black text */
+    background-color: #eaebea; 
+    color: black; 
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .mode-buttons button.active {
-    background-color: #074387; /* Darker green on active */
+    background-color: #074387; 
 }
 
 .mode-buttons button:hover {
-    background-color: #dfe6df; /* Hover effect for buttons */
+    background-color: #dfe6df; 
 }
 
-/* Degrees and Back Buttons */
+
 .degrees-back-buttons {
     display: flex;
-    justify-content: space-between; /* Adjust spacing between buttons */
-    margin-top: 10px; /* Add spacing above the buttons */
+    justify-content: space-between; 
+    margin-top: 10px; 
 }
 
 .degrees-back-buttons button {
-    width: 48%; /* Set the width to 48% for each button to fit in the row */
+    width: 48%; 
     padding: 5%;
     font-size: 1rem;
     border: none;
@@ -109,7 +109,7 @@ section {
 
 
 
-/* Buttons */
+
 button {
     width: 100%;
     padding: 5%;
@@ -117,13 +117,13 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #841a07;
+    background-color: #353231;
     color: white;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #5f1407;
+    background-color: #4d4948;
 }
 
 
@@ -141,28 +141,28 @@ table {
     #display {
         font-size: 1.5rem;
         padding: 3%;
-        width: 100%; /* Ensure it stretches on smaller screens */
-        margin-bottom: 5%; /* Add some space below */
+        width: 100%; 
+        margin-bottom: 5%;
     }
 
     .mode-buttons {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-direction: column; 
         align-items: center;
         margin-bottom: 15%;
     }
 
     .mode-buttons button {
-        width: 100%; /* Full width for buttons */
-        margin-bottom: 10px; /* Space between buttons */
+        width: 100%; 
+        margin-bottom: 10px; 
     }
 
     .degrees-back-buttons {
-        flex-direction: column; /* Stack the buttons vertically */
-        margin-top: 5px; /* Reduce the margin above */
+        flex-direction: column; 
+        margin-top: 5px; 
     }
 
     .degrees-back-buttons button {
-        width: 100%; /* Full width for buttons */
-        margin-bottom: 10px; /* Space between buttons */
+        width: 100%; 
+        margin-bottom: 10px;
     }
 }
